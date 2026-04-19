@@ -5,13 +5,17 @@ import { SiteLayout } from "@/components/site-layout";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Adoltech Shopify Developer" },
+      { title: "Contact Adoltech — Start your Shopify project" },
       {
         name: "description",
-        content: "Tell Adebisi Olamide about your Shopify project. Reply within 48 hours.",
+        content:
+          "Contact Adebisi Olamide (Adoltech) for Shopify development, migration, or optimization. Average response time: 1 hour.",
       },
       { property: "og:title", content: "Contact Adoltech" },
-      { property: "og:description", content: "Start a Shopify project or ask a question." },
+      {
+        property: "og:description",
+        content: "Start a Shopify project — average response time 1 hour.",
+      },
     ],
   }),
   component: ContactPage,
@@ -24,6 +28,7 @@ const projectTypes = [
   "Speed optimization",
   "Conversion optimization",
   "App integration",
+  "Email marketing (Klaviyo)",
   "Other",
 ];
 
@@ -37,125 +42,132 @@ function ContactPage() {
 
   return (
     <SiteLayout>
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-24">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Contact</p>
-          <h1 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">
-            Let's build something on Shopify.
-          </h1>
-          <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl">
-            Share a few details about your store and goals. I reply to every message within 48 hours.
-          </p>
-        </div>
-      </section>
+      <div>
+        <h2 className="text-xl md:text-2xl font-bold text-foreground">Contact</h2>
+        <p className="mt-3 text-muted-foreground">
+          Get in touch via the form below or directly at{" "}
+          <a
+            href="mailto:hello@adoltech.dev"
+            className="text-foreground font-medium hover:underline"
+          >
+            hello@adoltech.dev
+          </a>
+          .
+        </p>
 
-      <section>
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-12 md:py-16 grid gap-10 lg:grid-cols-[1fr_320px]">
-          {/* Form */}
-          <div className="border border-border rounded-lg p-6 md:p-8 bg-background">
+        <div className="mt-8 grid lg:grid-cols-[1fr_300px] gap-8">
+          <div className="bg-background border border-border rounded-lg p-6 md:p-8">
             {submitted ? (
-              <div className="py-12 text-center">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-md border border-border">
-                  <i className="ri-check-line text-2xl" aria-hidden />
+              <div className="py-10 text-center">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-secondary border border-border">
+                  <i className="ri-check-line text-2xl text-foreground" aria-hidden />
                 </span>
-                <h2 className="mt-4 text-2xl font-semibold">Thanks — message received.</h2>
-                <p className="mt-2 text-muted-foreground max-w-md mx-auto">
-                  I'll get back to you within 48 hours. In the meantime, feel free to browse the{" "}
-                  <a href="/portfolio" className="underline underline-offset-4">portfolio</a>.
+                <h3 className="mt-4 text-xl font-bold text-foreground">
+                  Thanks — message received.
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground max-w-md mx-auto">
+                  I'll get back to you within 1 hour during working hours.
                 </p>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="space-y-5">
-                <div className="grid gap-5 md:grid-cols-2">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium">Name</label>
-                    <input
-                      id="name"
-                      name="name"
-                      required
-                      className="mt-2 w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium">Email</label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      className="mt-2 w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-                      placeholder="you@brand.com"
-                    />
-                  </div>
-                </div>
-
+              <form onSubmit={onSubmit} className="space-y-5 max-w-lg mx-auto">
                 <div>
-                  <label htmlFor="type" className="block text-sm font-medium">Project type</label>
+                  <label className="block text-foreground font-medium mb-2 text-sm" htmlFor="name">
+                    <i className="ri-user-line mr-1" aria-hidden /> Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    className="w-full px-4 py-2.5 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label className="block text-foreground font-medium mb-2 text-sm" htmlFor="email">
+                    <i className="ri-mail-line mr-1" aria-hidden /> Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="w-full px-4 py-2.5 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                    placeholder="you@brand.com"
+                  />
+                </div>
+                <div>
+                  <label className="block text-foreground font-medium mb-2 text-sm" htmlFor="type">
+                    <i className="ri-briefcase-line mr-1" aria-hidden /> Project type
+                  </label>
                   <select
                     id="type"
                     name="type"
-                    className="mt-2 w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
                     defaultValue={projectTypes[0]}
+                    className="w-full px-4 py-2.5 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                   >
                     {projectTypes.map((t) => (
-                      <option key={t} value={t}>{t}</option>
+                      <option key={t} value={t}>
+                        {t}
+                      </option>
                     ))}
                   </select>
                 </div>
-
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium">Project details</label>
+                  <label
+                    className="block text-foreground font-medium mb-2 text-sm"
+                    htmlFor="message"
+                  >
+                    <i className="ri-chat-3-line mr-1" aria-hidden /> Message
+                  </label>
                   <textarea
                     id="message"
                     name="message"
+                    rows={5}
                     required
-                    rows={6}
-                    className="mt-2 w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none"
+                    className="w-full px-4 py-2.5 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
                     placeholder="Tell me about your store, what you're trying to achieve, and your timeline."
                   />
                 </div>
-
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+                  className="bg-primary text-primary-foreground px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity flex items-center font-medium"
                 >
-                  Send message
-                  <i className="ri-send-plane-line" aria-hidden />
+                  <i className="ri-send-plane-fill mr-2" aria-hidden /> Send Message
                 </button>
               </form>
             )}
           </div>
 
-          {/* Sidebar */}
-          <aside className="space-y-6">
-            <div className="border border-border rounded-lg p-6 bg-secondary">
-              <div className="flex items-center gap-2 text-sm font-medium">
+          <aside className="space-y-5">
+            <div className="border border-border rounded-lg p-5 bg-secondary">
+              <div className="flex items-center gap-2 text-sm font-medium text-foreground">
                 <span className="inline-block h-2 w-2 rounded-full bg-foreground" aria-hidden />
                 Available for new projects
               </div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Currently booking starts from the first week of next month.
+              <p className="mt-2 text-xs text-muted-foreground">
+                Currently booking from the first week of next month.
               </p>
             </div>
 
-            <div className="border border-border rounded-lg p-6">
-              <h3 className="text-sm font-semibold">Direct</h3>
-              <ul className="mt-3 space-y-2 text-sm">
-                <li className="flex items-center gap-2 text-muted-foreground">
+            <div className="border border-border rounded-lg p-5">
+              <h4 className="text-sm font-semibold text-foreground">Direct</h4>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-center gap-2">
                   <i className="ri-mail-line" aria-hidden /> hello@adoltech.dev
                 </li>
-                <li className="flex items-center gap-2 text-muted-foreground">
+                <li className="flex items-center gap-2">
                   <i className="ri-map-pin-line" aria-hidden /> Lagos, Nigeria · Remote
                 </li>
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <i className="ri-time-line" aria-hidden /> Reply within 48 hours
+                <li className="flex items-center gap-2">
+                  <i className="ri-time-line" aria-hidden /> Reply within 1 hour
                 </li>
               </ul>
             </div>
 
-            <div className="border border-border rounded-lg p-6">
-              <h3 className="text-sm font-semibold">Elsewhere</h3>
+            <div className="border border-border rounded-lg p-5">
+              <h4 className="text-sm font-semibold text-foreground">Elsewhere</h4>
               <div className="mt-3 flex items-center gap-2">
                 {[
                   { icon: "ri-twitter-x-line", href: "https://x.com" },
@@ -169,7 +181,7 @@ function ContactPage() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={s.icon}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border hover:bg-secondary transition-colors"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border hover:bg-secondary transition-colors text-foreground"
                   >
                     <i className={s.icon} aria-hidden />
                   </a>
@@ -178,7 +190,7 @@ function ContactPage() {
             </div>
           </aside>
         </div>
-      </section>
+      </div>
     </SiteLayout>
   );
 }
