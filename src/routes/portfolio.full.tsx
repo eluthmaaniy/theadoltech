@@ -1,165 +1,206 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
-import { projects } from "@/lib/portfolio-data";
+import { projects, type Category } from "@/lib/portfolio-data";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/portfolio/full")({
   head: () => ({
     meta: [
-      { title: "Full Case Studies — Adoltech Shopify Portfolio" },
+      { title: "Full Portfolio — Adoltech Shopify Case Studies" },
       {
         name: "description",
-        content: "Detailed Shopify case studies: challenge, approach, and measurable results for each project.",
+        content:
+          "Browse Adoltech's complete portfolio of Shopify stores, migrations, and conversion projects with detailed case studies.",
       },
-      { property: "og:title", content: "Full Shopify Case Studies — Adoltech" },
-      { property: "og:description", content: "Long-form breakdowns of selected Shopify projects." },
+      { property: "og:title", content: "Full Shopify Portfolio — Adoltech" },
+      {
+        property: "og:description",
+        content: "Long-form case studies of selected Shopify projects.",
+      },
     ],
   }),
   component: FullPortfolioPage,
 });
 
-const studies = projects.map((p) => ({
-  ...p,
-  challenge:
-    p.category === "Migration"
-      ? "Legacy platform was slow, fragile, and bleeding SEO equity on every release."
-      : p.category === "Theme"
-      ? "Existing theme couldn't keep up with merchandising experiments and brand evolution."
-      : "Conversion was flat despite strong traffic — friction lived in PDP, cart, and checkout.",
-  approach: [
-    "Discovery: audit data, content model, and merchandising workflows.",
-    "Architecture: design Shopify 2.0 sections, metaobjects, and a clean Liquid foundation.",
-    "Build: ship in vertical slices with weekly preview environments.",
-    "Measure: instrument Web Vitals and funnel events from day one.",
-  ],
-  metrics: [
-    { label: "Result", value: p.result },
-    { label: "Timeline", value: "6–10 weeks" },
-    { label: "Stack", value: p.tech.slice(0, 2).join(", ") },
-  ],
-  testimonial: {
-    quote: `Working with Adoltech on ${p.client} was exactly what we needed — calm, sharp, and on-time.`,
-    author: `${p.client} team`,
-  },
-}));
+const filters: Array<"All" | Category> = ["All", "Theme", "Migration", "Optimization", "Marketing"];
 
 function FullPortfolioPage() {
+  const [active, setActive] = useState<(typeof filters)[number]>("All");
+  const filtered = active === "All" ? projects : projects.filter((p) => p.category === active);
+
   return (
     <SiteLayout>
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-24">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Case studies</p>
-          <h1 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">
-            The full breakdown.
-          </h1>
-          <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl">
-            Long-form case studies covering the challenge, the approach, and the numbers.
-          </p>
+      <div>
+        <h2 className="text-xl md:text-2xl font-bold text-foreground">
+          Full Portfolio · {projects.length}+ projects
+        </h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Filter by category or click any project to read the case study.
+        </p>
+
+        {/* Filters */}
+        <div className="flex flex-wrap gap-2 mt-6">
+          {filters.map((f) => (
+            <button
+              key={f}
+              type="button"
+              onClick={() => setActive(f)}
+              className={cn(
+                "px-4 py-2 rounded-full text-sm font-medium transition-colors",
+                active === f
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-background border border-border text-muted-foreground hover:bg-secondary hover:text-foreground",
+              )}
+            >
+              {f}
+            </button>
+          ))}
         </div>
-      </section>
 
-      <section>
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-12 md:py-16 grid gap-12 lg:grid-cols-[220px_1fr]">
-          {/* Sticky index */}
-          <aside className="hidden lg:block">
-            <div className="sticky top-24">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Projects</p>
-              <ul className="mt-4 space-y-2">
-                {studies.map((s) => (
-                  <li key={s.slug}>
-                    <a
-                      href={`#${s.slug}`}
-                      className="block text-sm text-muted-foreground hover:text-foreground border-l border-border pl-3 py-1 hover:border-foreground transition-colors"
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
+          {filtered.map((p) => (
+            <a
+              key={p.slug}
+              href={`#${p.slug}`}
+              className="group bg-background rounded-lg border border-border overflow-hidden block hover:bg-secondary transition-all hover:-translate-y-1"
+            >
+              <div className="aspect-[4/3] overflow-hidden bg-secondary">
+                <img
+                  src={p.cover}
+                  alt={p.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover grayscale"
+                />
+              </div>
+              <div className="p-4">
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                  <span>{p.category}</span>
+                  <span className="text-foreground font-medium">{p.result}</span>
+                </div>
+                <h4 className="mt-1 font-semibold text-foreground">{p.title}</h4>
+                <p className="text-sm text-muted-foreground line-clamp-2 mt-1">
+                  {p.description}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {p.tech.slice(0, 2).map((t) => (
+                    <span
+                      key={t}
+                      className="text-[11px] px-2 py-0.5 rounded-full bg-secondary border border-border text-muted-foreground"
                     >
-                      {s.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </aside>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
 
-          {/* Studies */}
-          <div className="space-y-20">
-            {studies.map((s, idx) => (
-              <article key={s.slug} id={s.slug} className="scroll-mt-24">
+        {filtered.length === 0 && (
+          <p className="text-center text-sm text-muted-foreground py-12">
+            No projects in this category yet.
+          </p>
+        )}
+
+        {/* Detailed Case Studies */}
+        <section className="mt-16">
+          <h3 className="text-xl font-bold text-foreground border-t border-border pt-8">
+            Detailed case studies
+          </h3>
+          <div className="mt-8 space-y-16">
+            {projects.slice(0, 4).map((p, idx) => (
+              <article key={p.slug} id={p.slug} className="scroll-mt-24">
                 <div className="flex items-center gap-3 text-xs text-muted-foreground">
                   <span className="font-mono">{String(idx + 1).padStart(2, "0")}</span>
                   <span>·</span>
-                  <span>{s.category}</span>
+                  <span>{p.category}</span>
                 </div>
-                <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight">{s.title}</h2>
-                <p className="mt-3 text-muted-foreground max-w-2xl">{s.description}</p>
+                <h4 className="mt-2 text-2xl md:text-3xl font-bold text-foreground tracking-tight">
+                  {p.title}
+                </h4>
+                <p className="mt-2 text-muted-foreground max-w-2xl">{p.description}</p>
 
-                <div className="mt-6 aspect-[16/9] overflow-hidden border border-border rounded-lg bg-secondary">
-                  <img src={s.cover} alt={s.title} loading="lazy" className="h-full w-full object-cover grayscale" />
+                <div className="mt-5 aspect-[16/9] overflow-hidden border border-border rounded-lg bg-secondary">
+                  <img
+                    src={p.cover}
+                    alt={p.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover grayscale"
+                  />
                 </div>
 
-                {/* Metrics */}
-                <div className="mt-6 grid gap-px bg-border border border-border rounded-lg overflow-hidden grid-cols-1 sm:grid-cols-3">
-                  {s.metrics.map((m) => (
-                    <div key={m.label} className="bg-background p-5">
-                      <div className="text-xs uppercase tracking-[0.15em] text-muted-foreground">{m.label}</div>
-                      <div className="mt-2 text-lg font-semibold">{m.value}</div>
+                <div className="mt-5 grid sm:grid-cols-3 gap-px bg-border border border-border rounded-lg overflow-hidden">
+                  {[
+                    { label: "Result", value: p.result },
+                    { label: "Timeline", value: "6–10 weeks" },
+                    { label: "Stack", value: p.tech.slice(0, 2).join(", ") },
+                  ].map((m) => (
+                    <div key={m.label} className="bg-background p-4">
+                      <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
+                        {m.label}
+                      </div>
+                      <div className="mt-1 text-base font-semibold text-foreground">{m.value}</div>
                     </div>
                   ))}
                 </div>
 
-                {/* Challenge / Approach */}
-                <div className="mt-10 grid gap-10 md:grid-cols-2">
+                <div className="mt-6 grid md:grid-cols-2 gap-6">
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                    <h5 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                       Challenge
-                    </h3>
-                    <p className="mt-3 text-base leading-relaxed">{s.challenge}</p>
+                    </h5>
+                    <p className="mt-2 text-sm text-foreground/85 leading-relaxed">
+                      {p.category === "Migration"
+                        ? "Legacy platform was slow, fragile, and bleeding SEO equity on every release."
+                        : p.category === "Theme"
+                        ? "Existing theme couldn't keep up with merchandising experiments and brand evolution."
+                        : p.category === "Marketing"
+                        ? "Email and paid channels were under-instrumented and ROAS was inconsistent."
+                        : "Conversion was flat despite strong traffic — friction lived in PDP, cart, and checkout."}
+                    </p>
                   </div>
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                    <h5 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                       Approach
-                    </h3>
-                    <ul className="mt-3 space-y-2 text-base leading-relaxed">
-                      {s.approach.map((a) => (
-                        <li key={a} className="flex gap-3">
-                          <i className="ri-check-line mt-1 text-foreground" aria-hidden />
-                          <span>{a}</span>
-                        </li>
-                      ))}
+                    </h5>
+                    <ul className="mt-2 space-y-1.5 text-sm text-foreground/85">
+                      <li className="flex gap-2">
+                        <i className="ri-check-line text-foreground mt-0.5" aria-hidden />
+                        Audit data, content model, and merchandising workflow.
+                      </li>
+                      <li className="flex gap-2">
+                        <i className="ri-check-line text-foreground mt-0.5" aria-hidden />
+                        Architect Shopify 2.0 sections and metaobjects.
+                      </li>
+                      <li className="flex gap-2">
+                        <i className="ri-check-line text-foreground mt-0.5" aria-hidden />
+                        Ship in vertical slices with weekly previews.
+                      </li>
+                      <li className="flex gap-2">
+                        <i className="ri-check-line text-foreground mt-0.5" aria-hidden />
+                        Instrument Web Vitals and funnel events from day one.
+                      </li>
                     </ul>
                   </div>
                 </div>
-
-                {/* Stack */}
-                <div className="mt-10">
-                  <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Stack</h3>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {s.tech.map((t) => (
-                      <span key={t} className="text-xs px-3 py-1.5 rounded-md border border-border bg-secondary">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Testimonial */}
-                <blockquote className="mt-10 border-l-2 border-foreground pl-5 py-2">
-                  <p className="text-lg italic">“{s.testimonial.quote}”</p>
-                  <footer className="mt-2 text-sm text-muted-foreground">— {s.testimonial.author}</footer>
-                </blockquote>
               </article>
             ))}
-
-            <div className="border-t border-border pt-10 flex flex-wrap gap-3 items-center justify-between">
-              <p className="text-sm text-muted-foreground">Like what you see?</p>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
-              >
-                Start a project
-                <i className="ri-arrow-right-up-line" aria-hidden />
-              </Link>
-            </div>
           </div>
+        </section>
+
+        <div className="mt-12 text-center border-t border-border pt-8">
+          <p className="text-sm text-muted-foreground">Like what you see?</p>
+          <Link
+            to="/contact"
+            className="mt-3 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity text-sm font-medium"
+          >
+            Start a project
+            <i className="ri-arrow-right-up-line" aria-hidden />
+          </Link>
         </div>
-      </section>
+      </div>
     </SiteLayout>
   );
 }

@@ -1,175 +1,146 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
+import { Stars } from "@/components/stars";
+import { reviewSummary, featuredReviews } from "@/lib/reviews-data";
 
 export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
-      { title: "Reviews — Adoltech Shopify Developer" },
+      { title: "Reviews — Adoltech Shopify Expert" },
       {
         name: "description",
-        content: "What clients say about working with Adebisi Olamide on their Shopify stores.",
+        content:
+          "218+ five-star reviews for Adoltech. See what Shopify merchants say about working with Adebisi Olamide.",
       },
       { property: "og:title", content: "Client Reviews — Adoltech" },
-      { property: "og:description", content: "Real testimonials from Shopify brands." },
+      {
+        property: "og:description",
+        content: "Real testimonials from Shopify brands worldwide.",
+      },
     ],
   }),
   component: ReviewsPage,
 });
 
-const featured = {
-  quote:
-    "Adoltech rebuilt our Shopify Plus store from the ground up. Page load dropped by 2.4 seconds and we saw a 38% lift in conversion in the first month.",
-  name: "Maya Okonkwo",
-  role: "Head of E-commerce",
-  store: "Northwind Apparel",
-};
-
-const reviews = [
-  {
-    rating: 5,
-    quote:
-      "He migrated our 12,000 SKU catalog from WooCommerce with zero downtime. Honest timelines, zero drama.",
-    name: "Daniel Hertz",
-    role: "Founder",
-    store: "Atlas Coffee Co.",
-  },
-  {
-    rating: 5,
-    quote:
-      "Our PDP and cart drawer feel native to Shopify but completely on-brand. Add to cart jumped 21%.",
-    name: "Lila Bloomroot",
-    role: "Brand Director",
-    store: "Bloomroot Skincare",
-  },
-  {
-    rating: 5,
-    quote: "Subscription onboarding finally clicks. LTV up 33% and the dashboard is readable.",
-    name: "Owen Park",
-    role: "Growth Lead",
-    store: "Ember Outdoors",
-  },
-  {
-    rating: 5,
-    quote:
-      "The Magento → Shopify replatform was the smoothest migration we've ever done. Recommend without hesitation.",
-    name: "Priya Nair",
-    role: "CTO",
-    store: "Noir Eyewear",
-  },
-  {
-    rating: 5,
-    quote: "Theme is modular, fast, and our merchandisers can ship pages without touching code.",
-    name: "Marcus Lee",
-    role: "Director of Digital",
-    store: "Harborline Furniture",
-  },
-  {
-    rating: 5,
-    quote: "Quiet, sharp, ships on time. He treats our store like he owns the brand.",
-    name: "Sade Adeyemi",
-    role: "Founder",
-    store: "Kindle & Stone",
-  },
-];
-
-const brands = ["NORTHWIND", "ATLAS", "BLOOMROOT", "EMBER", "NOIR", "HARBORLINE"];
-
-function Stars({ count }: { count: number }) {
-  return (
-    <div className="flex items-center gap-0.5" aria-label={`${count} out of 5 stars`}>
-      {Array.from({ length: 5 }).map((_, i) => (
-        <i
-          key={i}
-          className={i < count ? "ri-star-fill text-foreground" : "ri-star-line text-muted-foreground"}
-          aria-hidden
-        />
-      ))}
-    </div>
-  );
-}
-
 function ReviewsPage() {
   return (
     <SiteLayout>
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-24">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Reviews</p>
-          <h1 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">
-            Trusted by Shopify brands.
-          </h1>
-          <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl">
-            A few words from founders, ecommerce leads, and merchandising teams I've shipped with.
-          </p>
-        </div>
-      </section>
+      <section className="md:flex md:gap-8">
+        {/* Summary */}
+        <div className="md:w-1/2">
+          <h2 className="text-xl md:text-2xl font-bold text-foreground">
+            {reviewSummary.total} Reviews
+          </h2>
 
-      {/* Featured */}
-      <section className="border-b border-border bg-secondary">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-20">
-          <Stars count={5} />
-          <blockquote className="mt-6 text-2xl md:text-4xl font-medium leading-snug tracking-tight max-w-4xl">
-            “{featured.quote}”
-          </blockquote>
-          <div className="mt-8 flex items-center gap-4">
-            <div className="h-12 w-12 rounded-md bg-foreground text-background flex items-center justify-center font-semibold">
-              {featured.name.charAt(0)}
-            </div>
+          <div className="mt-4 flex items-start gap-4">
             <div>
-              <div className="text-sm font-semibold">{featured.name}</div>
-              <div className="text-sm text-muted-foreground">{featured.role} · {featured.store}</div>
+              <div className="text-3xl font-bold text-foreground">
+                {reviewSummary.avg.toFixed(1)}
+              </div>
+              <Stars count={5} className="mt-1" />
+            </div>
+
+            <div className="ml-2 text-sm text-muted-foreground flex-1">
+              {reviewSummary.breakdown.map((b) => (
+                <div key={b.stars} className="flex items-center gap-2 mt-2 first:mt-0">
+                  <span className="w-16 text-foreground">{b.stars} Stars</span>
+                  <div className="flex-1 bg-secondary h-2 rounded overflow-hidden">
+                    <div
+                      className="bg-foreground h-2"
+                      style={{ width: `${b.pct}%` }}
+                    />
+                  </div>
+                  <span className="w-12 text-right">({b.count})</span>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Grid */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-20">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {reviews.map((r) => (
-              <article key={r.name} className="border border-border rounded-lg p-6 bg-background hover:bg-secondary transition-colors">
-                <Stars count={r.rating} />
-                <p className="mt-4 text-sm leading-relaxed text-foreground">“{r.quote}”</p>
-                <div className="mt-6 pt-4 border-t border-border">
-                  <div className="text-sm font-semibold">{r.name}</div>
-                  <div className="text-xs text-muted-foreground">{r.role} · {r.store}</div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Brands strip */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground text-center">
-            Brands I've worked with
-          </p>
-          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center">
-            {brands.map((b) => (
-              <div key={b} className="text-center text-sm font-semibold tracking-[0.2em] text-muted-foreground">
-                {b}
+          {/* Quality metrics */}
+          <div className="mt-6 text-sm space-y-2">
+            {reviewSummary.metrics.map((m) => (
+              <div key={m.label} className="flex justify-between border-b border-border pb-2">
+                <span className="text-foreground">{m.label}</span>
+                <span className="text-foreground inline-flex items-center gap-1">
+                  <i className="ri-star-fill" aria-hidden /> {m.value.toFixed(1)}
+                </span>
               </div>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* CTA */}
-      <section>
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-20 text-center">
-          <h2 className="text-2xl md:text-4xl font-semibold tracking-tight">Want to be the next one?</h2>
-          <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
-            Let's talk about your Shopify store and what's next on your roadmap.
-          </p>
-          <Link
-            to="/contact"
-            className="mt-6 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
-          >
-            Start a project
-            <i className="ri-arrow-right-up-line" aria-hidden />
-          </Link>
+        {/* Featured Reviews */}
+        <div className="md:w-1/2 mt-8 md:mt-0">
+          <h3 className="text-lg font-semibold text-foreground mb-3">Featured Reviews</h3>
+
+          <div className="flex md:block gap-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-2 md:pb-0 md:space-y-4">
+            {featuredReviews.slice(0, 3).map((r) => (
+              <article
+                key={r.username}
+                className="bg-background rounded-lg p-4 border border-border min-w-[85%] md:min-w-0 snap-center"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <img
+                      src={`https://i.pravatar.cc/60?img=${r.avatarSeed}`}
+                      alt=""
+                      className="w-10 h-10 rounded-full grayscale"
+                    />
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2">
+                        <p className="font-medium text-foreground truncate">{r.username}</p>
+                        <img
+                          src={`https://flagcdn.com/24x18/${r.countryCode}.png`}
+                          alt={r.country}
+                          className="inline-block"
+                          width={24}
+                          height={18}
+                        />
+                      </div>
+                      <p className="text-xs text-muted-foreground truncate">{r.country}</p>
+                    </div>
+                  </div>
+                  <div className="text-sm text-foreground inline-flex items-center gap-1 shrink-0">
+                    <Stars count={r.rating} />
+                    <span className="ml-1">{r.rating}</span>
+                  </div>
+                </div>
+
+                <p className="mt-3 text-sm text-foreground/80 leading-relaxed line-clamp-3">
+                  {r.text}
+                </p>
+
+                <div className="mt-3 flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <img
+                      src={r.gigImage}
+                      alt=""
+                      className="w-[72px] h-12 object-cover rounded-md grayscale shrink-0"
+                    />
+                    <div className="text-xs text-muted-foreground truncate">
+                      {r.price} · {r.duration}
+                    </div>
+                  </div>
+                  <Link
+                    to="/full-reviews"
+                    className="text-xs text-foreground font-medium hover:underline shrink-0"
+                  >
+                    See full review
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-6 text-center">
+            <Link
+              to="/full-reviews"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity text-sm font-medium"
+            >
+              See all {reviewSummary.total} reviews
+              <i className="ri-arrow-right-line" aria-hidden />
+            </Link>
+          </div>
         </div>
       </section>
     </SiteLayout>
