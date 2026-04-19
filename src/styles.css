@@ -4,6 +4,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css");
+
 /*
  * Design system definition.
  *
