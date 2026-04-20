@@ -3,18 +3,10 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 function OnlinePill() {
-  const [time, setTime] = useState<string>(() =>
-    new Date().toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
-      timeZone: "Africa/Lagos",
-    }),
-  );
+  const [time, setTime] = useState<string | null>(null);
 
   useEffect(() => {
-    const id = setInterval(() => {
+    const update = () =>
       setTime(
         new Date().toLocaleTimeString("en-US", {
           hour: "2-digit",
@@ -24,7 +16,8 @@ function OnlinePill() {
           timeZone: "Africa/Lagos",
         }),
       );
-    }, 1000);
+    update();
+    const id = setInterval(update, 1000);
     return () => clearInterval(id);
   }, []);
 
@@ -34,8 +27,10 @@ function OnlinePill() {
         <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-70 animate-ping" />
         <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
       </span>
-      <span className="text-primary text-sm font-semibold">Online</span>
-      <span className="text-muted-foreground text-xs tabular-nums">· {time} WAT</span>
+        <span className="text-primary text-sm font-semibold">Online</span>
+        <span className="text-muted-foreground text-xs tabular-nums" suppressHydrationWarning>
+          {time ? `· ${time} WAT` : ""}
+        </span>
     </div>
   );
 }
