@@ -10,7 +10,7 @@ export function ProfileSidebar() {
           alt="Adebisi Olamide profile"
           width={128}
           height={128}
-          className="w-32 h-32 rounded-full border-4 border-foreground bg-background shadow-md object-cover"
+          className="w-32 h-32 rounded-full border-4 border-primary bg-background shadow-md object-cover"
         />
       </div>
       <div className="pt-20 md:pt-4">
@@ -18,12 +18,12 @@ export function ProfileSidebar() {
         <p className="text-sm text-muted-foreground -mt-0.5">@adoltech</p>
 
         <div className="flex items-center text-sm mt-2 flex-wrap gap-1.5">
-          <i className="ri-star-fill text-foreground" aria-hidden />
+          <i className="ri-star-fill text-primary" aria-hidden />
           <span className="text-foreground font-medium">5.0</span>
           <Link to="/reviews" className="text-muted-foreground hover:underline">
             (218)
           </Link>
-          <span className="ml-1 bg-secondary text-foreground border border-border px-2 py-1 rounded-full flex items-center text-xs font-medium">
+          <span className="ml-1 bg-primary/10 text-primary border border-primary/30 px-2 py-1 rounded-full flex items-center text-xs font-medium">
             <i className="ri-award-fill mr-1" aria-hidden /> Top Rated Expert
           </span>
         </div>
@@ -42,8 +42,11 @@ export function ProfileSidebar() {
         </div>
 
         <div className="flex items-center text-sm text-muted-foreground mt-2">
-          <span className="inline-block h-2 w-2 rounded-full bg-foreground mr-2" aria-hidden />
-          Available for new projects
+          <span className="relative flex h-2.5 w-2.5 mr-2" aria-hidden>
+            <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-60 animate-ping" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
+          </span>
+          <span className="text-primary font-medium">Available for new projects</span>
         </div>
 
         {/* Desktop CTA */}
