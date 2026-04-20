@@ -55,13 +55,11 @@ function AboutPage() {
       <section id="about">
         <h2 className="text-xl md:text-2xl font-bold text-foreground">About me</h2>
         <p className="mt-4 text-muted-foreground leading-relaxed">
-          Hi, I'm <span className="font-semibold text-foreground">Adebisi Olamide</span> — the
-          Shopify developer behind Adoltech. I help D2C brands{" "}
-          <span className="text-foreground font-medium">elevate their Shopify storefronts</span>{" "}
-          and turn casual visitors into loyal customers. From pixel-perfect theme builds to
-          checkout-tuning that lifts conversion rates by double digits, every project I touch is
-          engineered to{" "}
-          <span className="text-foreground font-medium">drive measurable revenue</span>.{" "}
+          Hi, I'm <span className="font-semibold text-foreground">Adebisi Olamide (Adoltech)</span>,
+          a Shopify expert focused on helping eCommerce brands build high-performing stores that
+          attract customers, increase conversions, and drive consistent growth. With solid
+          experience in Shopify store design, redesign, optimization, and growth strategy, I help
+          business owners turn ordinary stores into profitable online brands.{" "}
           {!bioOpen && (
             <button
               type="button"
@@ -75,23 +73,21 @@ function AboutPage() {
         {bioOpen && (
           <div className="mt-3 space-y-3 text-muted-foreground leading-relaxed">
             <p>
-              Over the last 6 years I've delivered 70+ Shopify projects — high-stakes Plus
-              migrations, custom 2.0 sections, headless Hydrogen builds, and conversion sprints
-              for brands doing 7 and 8 figures. My process is rooted in one question:{" "}
+              I don't just build websites — I create{" "}
               <span className="text-foreground font-medium">
-                what's stopping this store from converting better today?
-              </span>
+                strategic shopping experiences
+              </span>{" "}
+              tailored to your brand, audience, and business goals. From improving store aesthetics
+              and user experience to boosting speed, trust, and sales performance, every project is
+              approached with results in mind.
             </p>
             <p>
-              I obsess over the details that move the needle — Core Web Vitals under 1.5s, PDPs
-              that sell, frictionless cart drawers, and Klaviyo flows that recover abandoned
-              revenue on autopilot. The result: faster stores, higher AOV, and a codebase your
-              next developer will actually thank you for.
-            </p>
-            <p>
-              If you're ready to{" "}
-              <span className="text-foreground font-medium">elevate your Shopify store</span>{" "}
-              and unlock the conversion you know it's capable of — let's talk.
+              My goal is simple: to help store owners{" "}
+              <span className="text-foreground font-medium">
+                grow faster, sell smarter, and stand out
+              </span>{" "}
+              in a competitive market. When you work with me, you're partnering with someone who is
+              genuinely committed to your success and long-term growth.
             </p>
             <button
               type="button"
