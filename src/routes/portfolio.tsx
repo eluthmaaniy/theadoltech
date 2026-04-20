@@ -155,7 +155,7 @@ function PortfolioPage() {
         {/* CTA */}
         <div className="mt-8 text-center">
           <Link
-            to="/portfolio/full"
+            to="/full-portfolio"
             className="bg-primary text-primary-foreground px-6 py-2.5 rounded-md inline-flex items-center hover:opacity-90 transition-opacity font-medium"
           >
             View +50 All Projects <i className="ri-arrow-right-line ml-2" aria-hidden />
