@@ -8,7 +8,7 @@ export function Stars({ count, className }: { count: number; className?: string 
           key={i}
           className={cn(
             "text-sm",
-            i < count ? "ri-star-fill text-foreground" : "ri-star-line text-muted-foreground",
+            i < count ? "ri-star-fill text-gold" : "ri-star-line text-muted-foreground",
           )}
           aria-hidden
         />

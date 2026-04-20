@@ -14,16 +14,18 @@ export function ProfileSidebar() {
         />
       </div>
       <div className="pt-20 md:pt-4">
-        <h1 className="text-2xl font-bold text-foreground">Adebisi Olamide</h1>
+        <h1 className="text-2xl font-bold text-foreground">
+          Adebisi Olamide <span className="text-muted-foreground font-semibold">(Adoltech)</span>
+        </h1>
         <p className="text-sm text-muted-foreground -mt-0.5">@adoltech</p>
 
         <div className="flex items-center text-sm mt-2 flex-wrap gap-1.5">
-          <i className="ri-star-fill text-primary" aria-hidden />
+          <i className="ri-star-fill text-gold" aria-hidden />
           <span className="text-foreground font-medium">5.0</span>
           <Link to="/reviews" className="text-muted-foreground hover:underline">
             (218)
           </Link>
-          <span className="ml-1 bg-primary/10 text-primary border border-primary/30 px-2 py-1 rounded-full flex items-center text-xs font-medium">
+          <span className="ml-1 bg-pink/15 text-pink border border-pink/40 px-2 py-1 rounded-full flex items-center text-xs font-medium">
             <i className="ri-award-fill mr-1" aria-hidden /> Top Rated Expert
           </span>
         </div>
