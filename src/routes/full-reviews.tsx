@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import { SiteLayout } from "@/components/site-layout";
 import { Stars } from "@/components/stars";
 import { allReviews, reviewSummary } from "@/lib/reviews-data";
