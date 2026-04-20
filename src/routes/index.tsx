@@ -146,7 +146,7 @@ function AboutPage() {
             { v: "70+", l: "Projects delivered" },
             { v: "40+", l: "Stores launched" },
             { v: "6 yrs", l: "Shopify experience" },
-            { v: "$8M+", l: "Client GMV influenced" },
+            { v: "$50K+", l: "Client GMV influenced" },
           ].map((s) => (
             <div
               key={s.l}
