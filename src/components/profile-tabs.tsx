@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 
 const tabs = [
   { to: "/", label: "About" },
-  { to: "/services", label: "Services" },
   { to: "/reviews", label: "Reviews" },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/contact", label: "Contact" },
