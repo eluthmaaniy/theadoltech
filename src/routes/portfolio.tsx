@@ -26,18 +26,6 @@ const galleryImages = [
   "https://res.cloudinary.com/dr83qj6bf/image/upload/v1758609505/IMG-20250921-WA0091_ymtuvy.jpg",
 ];
 
-const videoTestimonials = [
-  "https://www.youtube.com/embed/4AaRXoHlzYQ",
-  "https://www.youtube.com/embed/ka8aQcefM8w",
-  "https://www.youtube.com/embed/yH-HEV22moE",
-  "https://www.youtube.com/embed/5OUaT8n-OoE",
-];
-
-const salesProof = [
-  { label: "View Proof 1", url: "https://drive.google.com/file/d/1K4alYhBd3o9ThZjyOC2gXPyGf211btSf/view?usp=sharing" },
-  { label: "View Proof 2", url: "https://drive.google.com/file/d/1J15GTYTyGMmvlPSDb19RD7Oz1kKfiWL6/view?usp=sharing" },
-  { label: "View Proof 3", url: "https://drive.google.com/file/d/1mxpbCc1AW-IFWrAtbgj2RnVSCJP26dmB/view?usp=drivesdk" },
-];
 
 function PortfolioPage() {
   return (
@@ -93,46 +81,6 @@ function PortfolioPage() {
           View +50 All Projects
         </Link>
       </div>
-
-      {/* Video Testimonials */}
-      <section className="mt-12">
-        <h3 className="text-lg md:text-xl font-bold text-foreground text-center">
-          Satisfied Client Video Testimonial
-        </h3>
-        <div className="mt-6 overflow-x-auto">
-          <div className="flex gap-6 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:overflow-visible">
-            {videoTestimonials.map((src, i) => (
-              <div key={i} className="relative aspect-[9/16] min-w-[260px] snap-center">
-                <iframe
-                  src={src}
-                  title={`Client testimonial ${i + 1}`}
-                  className="absolute inset-0 w-full h-full rounded-lg border border-border"
-                  loading="lazy"
-                  allowFullScreen
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sales Proof */}
-      <section className="mt-12">
-        <h3 className="text-lg md:text-xl font-bold text-foreground text-center">Sales Proof</h3>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6">
-          {salesProof.map((p) => (
-            <a
-              key={p.url}
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-primary text-primary-foreground px-6 py-2 rounded-md hover:opacity-90 transition-opacity font-medium"
-            >
-              {p.label}
-            </a>
-          ))}
-        </div>
-      </section>
     </SiteLayout>
   );
 }
