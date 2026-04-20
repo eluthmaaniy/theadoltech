@@ -23,26 +23,26 @@ export const Route = createFileRoute("/")({
 });
 
 const skillsPrimary = [
-  "Shopify Developer",
-  "Shopify 2.0 Sections",
-  "Liquid Expert",
+  "Store Design & Redesign",
   "Theme Customization",
-  "Store Migration",
+  "Conversion Optimization",
+  "Sales Funnel Strategy",
+  "Brand Storytelling",
 ];
 
 const skillsExtra = [
-  "Speed Optimization",
-  "Conversion Optimization",
-  "Klaviyo Email Flows",
-  "Meta Ads Manager",
-  "Google Ads",
-  "Recharge Subscriptions",
-  "Rebuy Personalization",
-  "Hydrogen / Headless",
-  "Metaobjects",
-  "Shopify Plus",
-  "Checkout Extensibility",
-  "Web Vitals Tuning",
+  "Product Page Optimization",
+  "Cart & Checkout Tuning",
+  "Upsell & Cross-sell Setup",
+  "Trust & Social Proof",
+  "Email Marketing Flows",
+  "Abandoned Cart Recovery",
+  "Store Speed Boost",
+  "Mobile UX Polish",
+  "Subscription Setup",
+  "Growth Strategy",
+  "Launch & Migration",
+  "Ongoing Store Care",
 ];
 
 function AboutPage() {
