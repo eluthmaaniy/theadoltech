@@ -1,5 +1,44 @@
 import profilePic from "@/assets/adoltech-profile.jpg";
 import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+
+function OnlinePill() {
+  const [time, setTime] = useState<string>(() =>
+    new Date().toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+      timeZone: "Africa/Lagos",
+    }),
+  );
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTime(
+        new Date().toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+          timeZone: "Africa/Lagos",
+        }),
+      );
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 rounded-full border border-primary/40 bg-primary/10">
+      <span className="relative flex h-2.5 w-2.5" aria-hidden>
+        <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-70 animate-ping" />
+        <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
+      </span>
+      <span className="text-primary text-sm font-semibold">Online</span>
+      <span className="text-muted-foreground text-xs tabular-nums">· {time} WAT</span>
+    </div>
+  );
+}
 
 export function ProfileSidebar() {
   return (
@@ -31,25 +70,16 @@ export function ProfileSidebar() {
         </div>
 
         <p className="text-foreground font-medium mt-2">
-          Shopify Developer & Store Optimization Specialist.
+          He'll bring your idea to reality
         </p>
 
         <div className="flex items-center text-sm text-muted-foreground mt-2 flex-wrap gap-x-4 gap-y-1">
           <span className="inline-flex items-center">
             <i className="ri-map-pin-line mr-1" aria-hidden /> Lagos, Nigeria
           </span>
-          <span className="inline-flex items-center">
-            <i className="ri-global-line mr-1" aria-hidden /> English
-          </span>
         </div>
 
-        <div className="flex items-center text-sm text-muted-foreground mt-2">
-          <span className="relative flex h-2.5 w-2.5 mr-2" aria-hidden>
-            <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-60 animate-ping" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
-          </span>
-          <span className="text-primary font-medium">Available for new projects</span>
-        </div>
+        <OnlinePill />
 
         {/* Desktop CTA */}
         <div className="hidden md:block mt-6">

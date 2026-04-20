@@ -45,12 +45,14 @@ function ContactPage() {
       <div>
         <h2 className="text-xl md:text-2xl font-bold text-foreground">Contact</h2>
         <p className="mt-3 text-muted-foreground">
-          Get in touch via the form below or directly at{" "}
+          Get in touch via the form below or message me directly on{" "}
           <a
-            href="mailto:hello@adoltech.dev"
+            href="https://wa.me/2349029628089"
+            target="_blank"
+            rel="noreferrer"
             className="text-foreground font-medium hover:underline"
           >
-            hello@adoltech.dev
+            WhatsApp
           </a>
           .
         </p>
@@ -155,7 +157,15 @@ function ContactPage() {
               <h4 className="text-sm font-semibold text-foreground">Direct</h4>
               <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
-                  <i className="ri-mail-line" aria-hidden /> hello@adoltech.dev
+                  <i className="ri-whatsapp-line" aria-hidden />
+                  <a
+                    href="https://wa.me/2349029628089"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:underline text-foreground"
+                  >
+                    +234 902 962 8089
+                  </a>
                 </li>
                 <li className="flex items-center gap-2">
                   <i className="ri-map-pin-line" aria-hidden /> Lagos, Nigeria · Remote
