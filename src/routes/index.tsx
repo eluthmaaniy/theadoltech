@@ -159,21 +159,8 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Languages / Education */}
-      <section className="mt-12 grid md:grid-cols-2 gap-8">
-        <div>
-          <h3 className="text-lg font-bold text-foreground">Languages</h3>
-          <ul className="mt-3 space-y-2 text-sm">
-            <li className="flex justify-between border-b border-border pb-2">
-              <span className="text-foreground">English</span>
-              <span className="text-muted-foreground">Fluent</span>
-            </li>
-            <li className="flex justify-between border-b border-border pb-2">
-              <span className="text-foreground">Yoruba</span>
-              <span className="text-muted-foreground">Native</span>
-            </li>
-          </ul>
-        </div>
+      {/* Certifications */}
+      <section className="mt-12">
         <div>
           <h3 className="text-lg font-bold text-foreground">Certifications</h3>
           <ul className="mt-3 space-y-2 text-sm">
