@@ -62,7 +62,7 @@ function ReviewsPage() {
               <div key={m.label} className="flex justify-between border-b border-border pb-2">
                 <span className="text-foreground">{m.label}</span>
                 <span className="text-foreground inline-flex items-center gap-1">
-                  <i className="ri-star-fill" aria-hidden /> {m.value.toFixed(1)}
+                  <i className="ri-star-fill text-gold" aria-hidden /> {m.value.toFixed(1)}
                 </span>
               </div>
             ))}

@@ -55,14 +55,18 @@ function AboutPage() {
       <section id="about">
         <h2 className="text-xl md:text-2xl font-bold text-foreground">About me</h2>
         <p className="mt-4 text-muted-foreground leading-relaxed">
-          Hi, I'm <span className="font-semibold text-foreground">Adebisi Olamide</span> — founder
-          of Adoltech. I have over 6 years of experience building, migrating, and optimizing
-          Shopify stores for D2C brands and 8-figure merchants.{" "}
+          Hi, I'm <span className="font-semibold text-foreground">Adebisi Olamide</span> — the
+          Shopify developer behind Adoltech. I help D2C brands{" "}
+          <span className="text-foreground font-medium">elevate their Shopify storefronts</span>{" "}
+          and turn casual visitors into loyal customers. From pixel-perfect theme builds to
+          checkout-tuning that lifts conversion rates by double digits, every project I touch is
+          engineered to{" "}
+          <span className="text-foreground font-medium">drive measurable revenue</span>.{" "}
           {!bioOpen && (
             <button
               type="button"
               onClick={() => setBioOpen(true)}
-              className="text-foreground font-medium hover:underline"
+              className="text-primary font-medium hover:underline"
             >
               Read more
             </button>
@@ -71,18 +75,28 @@ function AboutPage() {
         {bioOpen && (
           <div className="mt-3 space-y-3 text-muted-foreground leading-relaxed">
             <p>
-              I've delivered 70+ Shopify projects — from clean theme builds to high-stakes Shopify
-              Plus migrations. My focus is honest brand expression, friction-free checkout, and
-              codebases the next developer can actually read.
+              Over the last 6 years I've delivered 70+ Shopify projects — high-stakes Plus
+              migrations, custom 2.0 sections, headless Hydrogen builds, and conversion sprints
+              for brands doing 7 and 8 figures. My process is rooted in one question:{" "}
+              <span className="text-foreground font-medium">
+                what's stopping this store from converting better today?
+              </span>
             </p>
             <p>
-              Beyond development, I help brands grow through Klaviyo flows, Meta Ads, and
-              conversion-optimization sprints rooted in real data — not vanity metrics.
+              I obsess over the details that move the needle — Core Web Vitals under 1.5s, PDPs
+              that sell, frictionless cart drawers, and Klaviyo flows that recover abandoned
+              revenue on autopilot. The result: faster stores, higher AOV, and a codebase your
+              next developer will actually thank you for.
+            </p>
+            <p>
+              If you're ready to{" "}
+              <span className="text-foreground font-medium">elevate your Shopify store</span>{" "}
+              and unlock the conversion you know it's capable of — let's talk.
             </p>
             <button
               type="button"
               onClick={() => setBioOpen(false)}
-              className="text-foreground font-medium hover:underline"
+              className="text-primary font-medium hover:underline"
             >
               Show less
             </button>

@@ -13,7 +13,7 @@ export function ProfileTabs() {
 
   const isActive = (to: string) => {
     if (to === "/") return location.pathname === "/";
-    if (to === "/portfolio") return location.pathname.startsWith("/portfolio");
+    if (to === "/portfolio") return location.pathname.startsWith("/portfolio") || location.pathname === "/full-portfolio";
     if (to === "/reviews") return location.pathname.startsWith("/reviews") || location.pathname === "/full-reviews";
     return location.pathname === to;
   };

@@ -9,7 +9,7 @@ import {
 } from "@/lib/full-portfolio-data";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/portfolio/full")({
+export const Route = createFileRoute("/full-portfolio")({
   head: () => ({
     meta: [
       { title: "Full Portfolio · Adoltech – All Shopify Projects" },
