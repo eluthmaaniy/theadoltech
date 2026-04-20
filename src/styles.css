@@ -21,6 +21,7 @@
  */
 
 @theme inline {
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -72,8 +73,9 @@
   --card-foreground: oklch(0.27 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.27 0 0);
-  --primary: oklch(0.27 0 0);                    /* soft-dark used as primary */
+  --primary: oklch(0.66 0.17 155);               /* Fiverr × Upwork green blend */
   --primary-foreground: oklch(1 0 0);
+  --primary-hover: oklch(0.6 0.18 155);
   --secondary: oklch(0.967 0 0);                 /* ash-100 */
   --secondary-foreground: oklch(0.27 0 0);
   --muted: oklch(0.967 0 0);
@@ -84,8 +86,8 @@
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.27 0 0);
-  --chart-1: oklch(0.27 0 0);
+  --ring: oklch(0.66 0.17 155);
+  --chart-1: oklch(0.66 0.17 155);
   --chart-2: oklch(0.45 0 0);
   --chart-3: oklch(0.556 0 0);
   --chart-4: oklch(0.7 0 0);
