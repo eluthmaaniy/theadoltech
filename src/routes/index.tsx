@@ -193,6 +193,9 @@ function AboutPage() {
             </span>
           </li>
         </ul>
+      </section>
+
+
 
       {/* CTA */}
       <section className="mt-12">
