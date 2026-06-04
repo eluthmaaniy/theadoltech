@@ -173,7 +173,7 @@ function ContactPage() {
                   type="submit"
                   className="bg-primary text-primary-foreground px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity flex items-center font-medium"
                 >
-                  <i className="ri-send-plane-fill mr-2" aria-hidden /> Send Message
+                  <i className="ri-whatsapp-line mr-2" aria-hidden /> Send via WhatsApp
                 </button>
               </form>
             )}
