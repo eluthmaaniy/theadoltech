@@ -32,11 +32,31 @@ const projectTypes = [
   "Other",
 ];
 
+const budgetRanges = [
+  "Under $200",
+  "$200 – $500",
+  "$500 – $1,000",
+  "$1,000 – $2,500",
+  "$2,500 – $5,000",
+  "$5,000+",
+];
+
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") || "");
+    const email = String(data.get("email") || "");
+    const type = String(data.get("type") || "");
+    const budget = String(data.get("budget") || "");
+    const message = String(data.get("message") || "");
+
+    const text = `Hi Adoltech, I'd like to start a project.%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Project type:* ${type}%0A*Budget:* ${budget}%0A%0A*Message:*%0A${message}`;
+    const url = `https://wa.me/2349029628089?text=${encodeURI(text).replace(/#/g, "%23")}`;
+    window.open(url, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   }
 
@@ -117,6 +137,23 @@ function ContactPage() {
                   </select>
                 </div>
                 <div>
+                  <label className="block text-foreground font-medium mb-2 text-sm" htmlFor="budget">
+                    <i className="ri-wallet-3-line mr-1" aria-hidden /> Budget
+                  </label>
+                  <select
+                    id="budget"
+                    name="budget"
+                    defaultValue={budgetRanges[2]}
+                    className="w-full px-4 py-2.5 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  >
+                    {budgetRanges.map((b) => (
+                      <option key={b} value={b}>
+                        {b}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
                   <label
                     className="block text-foreground font-medium mb-2 text-sm"
                     htmlFor="message"
@@ -136,7 +173,7 @@ function ContactPage() {
                   type="submit"
                   className="bg-primary text-primary-foreground px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity flex items-center font-medium"
                 >
-                  <i className="ri-send-plane-fill mr-2" aria-hidden /> Send Message
+                  <i className="ri-whatsapp-line mr-2" aria-hidden /> Send via WhatsApp
                 </button>
               </form>
             )}

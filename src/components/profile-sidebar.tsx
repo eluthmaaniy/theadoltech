@@ -48,14 +48,20 @@ export function ProfileSidebar() {
         />
       </div>
       <div className="pt-20 md:pt-4">
-        <h1 className="text-2xl font-bold text-foreground">
-          Adebisi Olamide <span className="text-muted-foreground font-semibold">(Adoltech)</span>
+        <h1 className="text-2xl font-bold text-foreground flex items-center flex-wrap gap-x-1.5">
+          <span>Adebisi Olamide</span>
+          <span className="text-muted-foreground font-semibold">(Adoltech)</span>
+          <i
+            className="ri-verified-badge-fill text-[#1DA1F2] text-xl"
+            aria-label="Verified"
+            title="Verified"
+          />
         </h1>
         <p className="text-sm text-muted-foreground -mt-0.5">@adoltech</p>
 
         <div className="flex items-center text-sm mt-2 flex-wrap gap-1.5">
           <i className="ri-star-fill text-gold" aria-hidden />
-          <span className="text-foreground font-medium">5.0</span>
+          <span className="text-foreground font-medium">4.8</span>
           <Link to="/reviews" className="text-muted-foreground hover:underline">
             (218)
           </Link>

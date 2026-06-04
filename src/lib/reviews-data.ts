@@ -16,18 +16,18 @@ const ph = (seed: string) =>
 
 export const reviewSummary = {
   total: 218,
-  avg: 5.0,
+  avg: 4.8,
   breakdown: [
-    { stars: 5, count: 207, pct: 95 },
-    { stars: 4, count: 8, pct: 4 },
-    { stars: 3, count: 2, pct: 1 },
-    { stars: 2, count: 1, pct: 1 },
-    { stars: 1, count: 0, pct: 0 },
+    { stars: 5, count: 188, pct: 86 },
+    { stars: 4, count: 22, pct: 10 },
+    { stars: 3, count: 5, pct: 3 },
+    { stars: 2, count: 2, pct: 1 },
+    { stars: 1, count: 1, pct: 0 },
   ],
   metrics: [
-    { label: "Communication", value: 5.0 },
-    { label: "Quality of delivery", value: 5.0 },
-    { label: "Value of delivery", value: 4.9 },
+    { label: "Communication", value: 4.9 },
+    { label: "Quality of delivery", value: 4.8 },
+    { label: "Value of delivery", value: 4.8 },
   ],
 };
 
