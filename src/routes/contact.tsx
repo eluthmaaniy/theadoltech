@@ -137,6 +137,23 @@ function ContactPage() {
                   </select>
                 </div>
                 <div>
+                  <label className="block text-foreground font-medium mb-2 text-sm" htmlFor="budget">
+                    <i className="ri-wallet-3-line mr-1" aria-hidden /> Budget
+                  </label>
+                  <select
+                    id="budget"
+                    name="budget"
+                    defaultValue={budgetRanges[2]}
+                    className="w-full px-4 py-2.5 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  >
+                    {budgetRanges.map((b) => (
+                      <option key={b} value={b}>
+                        {b}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
                   <label
                     className="block text-foreground font-medium mb-2 text-sm"
                     htmlFor="message"
