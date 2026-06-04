@@ -32,11 +32,31 @@ const projectTypes = [
   "Other",
 ];
 
+const budgetRanges = [
+  "Under $200",
+  "$200 – $500",
+  "$500 – $1,000",
+  "$1,000 – $2,500",
+  "$2,500 – $5,000",
+  "$5,000+",
+];
+
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") || "");
+    const email = String(data.get("email") || "");
+    const type = String(data.get("type") || "");
+    const budget = String(data.get("budget") || "");
+    const message = String(data.get("message") || "");
+
+    const text = `Hi Adoltech, I'd like to start a project.%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Project type:* ${type}%0A*Budget:* ${budget}%0A%0A*Message:*%0A${message}`;
+    const url = `https://wa.me/2349029628089?text=${encodeURI(text).replace(/#/g, "%23")}`;
+    window.open(url, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   }
 
