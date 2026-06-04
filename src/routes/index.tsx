@@ -182,6 +182,18 @@ function AboutPage() {
         </div>
       </section>
 
+      {/* Education */}
+      <section className="mt-12">
+        <h3 className="text-lg font-bold text-foreground">Education</h3>
+        <ul className="mt-3 space-y-2 text-sm">
+          <li className="flex items-start gap-2 border-b border-border pb-2">
+            <i className="ri-graduation-cap-line text-foreground mt-0.5" aria-hidden />
+            <span>
+              <span className="text-foreground font-medium">LL.B (Bachelor of Laws)</span>
+            </span>
+          </li>
+        </ul>
+
       {/* CTA */}
       <section className="mt-12">
         <div className="border border-border rounded-lg p-6 md:p-10 bg-primary text-primary-foreground flex flex-col md:flex-row md:items-center md:justify-between gap-5">
