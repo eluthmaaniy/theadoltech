@@ -67,7 +67,7 @@ function ContactPage() {
         <p className="mt-3 text-muted-foreground">
           Get in touch via the form below or message me directly on{" "}
           <a
-            href="https://wa.me/2349029628089"
+            href="https://wa.me/2348108672854"
             target="_blank"
             rel="noreferrer"
             className="text-foreground font-medium hover:underline"
@@ -196,12 +196,12 @@ function ContactPage() {
                 <li className="flex items-center gap-2">
                   <i className="ri-whatsapp-line" aria-hidden />
                   <a
-                    href="https://wa.me/2349029628089"
+                    href="https://wa.me/2348108672854"
                     target="_blank"
                     rel="noreferrer"
                     className="hover:underline text-foreground"
                   >
-                    +234 902 962 8089
+                    +234 810 867 2854
                   </a>
                 </li>
                 <li className="flex items-center gap-2">
