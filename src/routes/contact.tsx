@@ -55,7 +55,7 @@ function ContactPage() {
     const message = String(data.get("message") || "");
 
     const text = `Hi Adoltech, I'd like to start a project.%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Project type:* ${type}%0A*Budget:* ${budget}%0A%0A*Message:*%0A${message}`;
-    const url = `https://wa.me/2349029628089?text=${encodeURI(text).replace(/#/g, "%23")}`;
+    const url = `https://wa.me/2348108672854?text=${encodeURI(text).replace(/#/g, "%23")}`;
     window.open(url, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   }
